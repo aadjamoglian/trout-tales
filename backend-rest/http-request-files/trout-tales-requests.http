@@ -1,0 +1,15 @@
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "species": "brook trout",
+    "weight": 1.5,
+    "length_in": 12,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Fight of my life, fought him for 10 minutes, almost snapped my line twice.",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}

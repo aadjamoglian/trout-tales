@@ -35,7 +35,7 @@ function createModel() {
         date: {type: Date, required: true, default: Date.now},
         species: {type: String, required: true},
         weight: {type: Number, required: true, min: 0},
-        length: {type: Number, required: true, min: 0},
+        length_in: {type: Number, required: true, min: 0},
         bait: {type: String, required: true},
         story: {type: String, required: true},
         location: {
@@ -52,8 +52,8 @@ function createModel() {
     return mongoose.model(CATCH_CLASS, catchSchema);
 }
 
-async function createCatch(date, species, weight, length, bait, story, location) {
-    const catchh = new Catch({date: date, species: species, weight: weight, length: length, bait: bait, story: story, location: location});
+async function createCatch(date, species, weight, length_in, bait, story, location) {
+    const catchh = new Catch({date: date, species: species, weight: weight, length_in: length_in, bait: bait, story: story, location: location});
     return catchh.save()
 }
 

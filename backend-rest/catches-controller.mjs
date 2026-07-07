@@ -15,3 +15,15 @@ app.listen(PORT, async () => {
     await catches.connect(true)
     console.log(`Server listening on port ${PORT}...`);
 });
+
+app.post('/catches', asyncHandler (async (req, res, next) => {
+
+    try {
+        let newCatch = await catches.createCatch(req.body.date, req.body.species, req.body.weight, req.body.length_in, req.body.bait, req.body.story, req.body.location);
+        res.status(201).type('application/json').send(newCatch);
+    } catch (error) {
+        console.log(error)
+        res.status(400).type('application/json').send(RESPONSE_400)
+    }
+
+}))
