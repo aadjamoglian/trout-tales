@@ -34,8 +34,8 @@ function createModel() {
     const catchSchema = mongoose.Schema({
         date: {type: Date, required: true, default: Date.now},
         species: {type: String, required: true},
-        weight: {type: Number, required: true, min: 0},
-        length_in: {type: Number, required: true, min: 0},
+        weight: {type: Number, required: true},
+        length_in: {type: Number, required: true},
         bait: {type: String, required: true},
         story: {type: String, required: true},
         location: {
@@ -62,5 +62,14 @@ async function findCatches(filter) {
     return query.exec();
 }
 
+async function updateCatch(filter, body) {
+    const result = Catch.updateOne(filter, body);
+    return result;
+}
 
-export { connect, createModel, createCatch, findCatches}
+const deleteCatchById = async (_id) => {
+    const result = await Catch.deleteOne({_id: _id});
+    return result.deletedCount;
+}
+
+export { connect, createModel, createCatch, findCatches, updateCatch, deleteCatchById}

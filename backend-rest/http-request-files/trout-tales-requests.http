@@ -1,3 +1,10 @@
+### Variable for catch to find
+@CATCH_ID = 6a4c6e77197725dd3817b273
+
+### Incorrect CATCH_ID does not exist
+@NON_EXISTENT_CATCH_ID = 6a258309a07a9729c4905bca
+
+### Create a catch 1
 POST http://localhost:3000/catches HTTP/1.1
 content-type: application/json
 
@@ -13,3 +20,151 @@ content-type: application/json
         "coordinates": [37.4525, 118.7372] 
     }
 }
+
+### Create a catch 2
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "species": "rainbow trout",
+    "weight": 2,
+    "length_in": 14,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Invalid Request: Bad date
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "number",
+    "species": "rainbow trout",
+    "weight": 2,
+    "length_in": 14,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Invalid Request: No species
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "weight": 2,
+    "length_in": 14,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Invalid Request: No length
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "weight": 2,
+    "species": "rainbow trout",
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Invalid Request: Empty coordinates
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "species": "rainbow trout",
+    "weight": 2,
+    "length_in": 14,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [180]
+    }
+}
+
+### Should error weight less than 0
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "species": "rainbow trout",
+    "weight": -1,
+    "length_in": 14,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Should error length less than 0
+POST http://localhost:3000/catches HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "species": "rainbow trout",
+    "weight": 1,
+    "length_in": -1,
+    "bait": "Powerbait Pink Mice Tail",
+    "story": "Epic battle dude",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Get all catches
+GET http://localhost:3000/catches HTTP/1.1
+
+
+
+### Retrieve catch by CATCH_ID:
+GET  http://localhost:3000/catches/{{CATCH_ID}} HTTP/1.1
+
+### Retrieve catch for non-existent id:
+GET  http://localhost:3000/catches/{{NON_EXISTENT_CATCH_ID}} HTTP/1.1
+
+### Update by catch id
+PUT http://localhost:3000/catches/{{CATCH_ID}} HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2026-07-06",
+    "species": "brown trout",
+    "weight": 3.2,
+    "length_in": 14,
+    "bait": "Nightcrawler",
+    "story": "It was a miracle!",
+    "location": {
+        "type": "Point",
+        "coordinates": [37.4525, 118.7372] 
+    }
+}
+
+### Delete by catch id
+DELETE http://localhost:3000/catches/{{CATCH_ID}} HTTP/1.1
