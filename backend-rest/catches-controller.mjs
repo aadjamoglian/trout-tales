@@ -16,6 +16,8 @@ app.listen(PORT, async () => {
     console.log(`Server listening on port ${PORT}...`);
 });
 
+
+
 app.post('/catches', asyncHandler ( async (req, res, next) => {
     try {
         let newCatch = await catches.createCatch(req.body.date, req.body.species, req.body.weight, req.body.length_in, req.body.bait, req.body.story, req.body.location);
