@@ -154,7 +154,6 @@ table {
     margin-right: auto;
     border-collapse: collapse; 
     width: 100%;
-    max-width: 960px;
 }
 
 thead {
@@ -167,8 +166,6 @@ tr, td  {
     color: #582922;
     padding: 1%
 }
-
-
 
 tr th {
   background-color: #5a7538; 

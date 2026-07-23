@@ -11,7 +11,7 @@ function CatchRow({ catchItem, onEdit, onDelete}) {
             <td>{catchItem.length_in}</td>
             <td>{catchItem.bait}</td>
             <td>{catchItem.story}</td>
-            <td>{catchItem.coordinates}</td>
+            <td>{catchItem.coordinates[0] + ", " + catchItem.coordinates[1]}</td>
             <td>
                 <p>
                     <a className="actionLink" href="/" onClick={e => {e.preventDefault(); onEdit(catchItem)}}><MdEdit /></a>
