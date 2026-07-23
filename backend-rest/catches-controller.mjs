@@ -20,7 +20,7 @@ app.listen(PORT, async () => {
 
 app.post('/catches', asyncHandler ( async (req, res, next) => {
     try {
-        let newCatch = await catches.createCatch(req.body.date, req.body.species, req.body.weight, req.body.length_in, req.body.bait, req.body.story, req.body.location);
+        let newCatch = await catches.createCatch(req.body.date, req.body.species, req.body.weight, req.body.length_in, req.body.bait, req.body.story, req.body.coordinates);
 
         if (req.body.weight <= 0) {
             throw new Error("Weight in lbs must be greater than 0!")
@@ -30,7 +30,7 @@ app.post('/catches', asyncHandler ( async (req, res, next) => {
             throw new Error("Length in inches must be greater than 0!")
         }
 
-        let coordinates = req.body.location.coordinates
+        let coordinates = req.body.coordinates
         if (coordinates.length === 0) {
             throw new Error("Empty coordinates!");
         } else if (coordinates.length === 1) {

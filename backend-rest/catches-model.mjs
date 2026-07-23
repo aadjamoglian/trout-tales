@@ -38,22 +38,13 @@ function createModel() {
         length_in: {type: Number, required: true},
         bait: {type: String, required: true},
         story: {type: String, required: true},
-        location: {
-            type: {
-                type: String, 
-                enum: ['Point'], // Must be 'Point'
-                required: true
-            },
-            coordinates: {
-                type: [Number], // Array of numbers: [lng, lat]
-                required: true
-            }}
+        coordinates: {type: [Number], required: true}// Array of numbers: [lng, lat]
     })
     return mongoose.model(CATCH_CLASS, catchSchema);
 }
 
-async function createCatch(date, species, weight, length_in, bait, story, location) {
-    const catchh = new Catch({date: date, species: species, weight: weight, length_in: length_in, bait: bait, story: story, location: location});
+async function createCatch(date, species, weight, length_in, bait, story, coordinates) {
+    const catchh = new Catch({date: date, species: species, weight: weight, length_in: length_in, bait: bait, story: story, coordinates: coordinates});
     return catchh.save()
 }
 
