@@ -12,6 +12,7 @@ export const UpdateCatchPage = ({catchItemToEdit}) => {
     const [bait, setBait] = useState(catchItemToEdit.bait);
     const [story, setStory] = useState(catchItemToEdit.story);
     const [coordinates, setCoordinates] = useState(catchItemToEdit.coordinates);
+    // const [geoOption, setGeoOption] = useState('')
 
     const navigate = useNavigate();
 
@@ -98,6 +99,7 @@ export const UpdateCatchPage = ({catchItemToEdit}) => {
                     type="text"
                     value={coordinates}
                     onChange={e => setCoordinates(e.target.value)}
+                    // disabled={geoOption === 'cityStateCountry'}
                 />
             </p>
             <button onClick={editCatch}>Update</button>

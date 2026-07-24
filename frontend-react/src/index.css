@@ -9,7 +9,7 @@ a:hover {
 
 body {
   font-family: "Boldonse", system-ui;
-  background-color: #D4E09B; 
+  background-color: #99EDC3; 
   color: #582922;
   margin: 0px;
   padding: 0px;
@@ -29,21 +29,21 @@ legend {
 }
 
 header, footer{
-  background-color: #5a7538;
-  color: #582922;
+  background-color: #008080;
+  color: white;
   margin: 0%;
   padding: 1%;
   width: 98%; 
 }
 
 header p, h1 {
-  color: #ddbb00;
+  color: salmon;
   text-align: left;
 }
 
-h1#editExercise {
+h1#editCatch {
   text-align: center;
-  color: #A44A3F;
+  color: white;
 }
 
 footer {
@@ -51,26 +51,27 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
+  background-color: #008080;
 }
 
 footer p {
-  color: #ddbb00
+  color: white
 }
 
 nav {
-    background-color: #A44A3F;
+    background-color: white;
     border-top: 1px solid black; 
     padding: 0.1rem;
     display: flex;
 }
 
 nav a {
-    background-color: #A44A3F; 
+    background-color: white; 
     border-left: 1px solid #5a7538;
     border-right: 1px solid #5a7538;
     border-top: 1px solid #5a7538;
     border-bottom: 1px solid #5a7538;
-    color: #5ceafd(255, 195, 195); 
+    color: black; 
     margin: 0px;
     padding: 2px;
     padding: 0rem 1.3rem; 
@@ -82,12 +83,12 @@ nav a {
 }
 
 nav a:visited {
-    background-color: #A44A3F; 
+    background-color: white; 
     border-left: 1px solid #5a7538;
     border-right: 1px solid #5a7538;
     border-top: 1px solid #5a7538;
     border-bottom: 1px solid #5a7538;
-    color: aquamarine; 
+    color: black; 
     margin: 0px;
     padding: 2px;
     padding: 0rem 1.3rem; 
@@ -99,12 +100,12 @@ nav a:visited {
 }  
 
 nav a:hover {
-    background-color: white; 
+    background-color: salmon; 
     border-left: 1px solid #5a7538;
     border-right: 1px solid #5a7538;
     border-top: 1px solid #5a7538;
     border-bottom: 1px solid #5a7538;
-    color: #A44A3F; 
+    color: white; 
     margin: 0px;
     padding: 2px;
     padding: 0rem 1.3rem; 
@@ -116,7 +117,7 @@ nav a:hover {
 }
 
 main {
-    background-color: #D4E09B;
+    background-color: #99EDC3;
     color: #A44A3F;
     margin: 0%;
     padding: 1% 2%;
@@ -124,11 +125,13 @@ main {
 }
 
 h1 {
-    color: #ddbb00;
+    color: white;
 }
 
 h2 {
-  color: #A44A3F
+  color: salmon;
+  border: 1px;
+  border-color: black;
 }
 
 img {
@@ -168,9 +171,9 @@ tr, td  {
 }
 
 tr th {
-  background-color: #5a7538; 
+  background-color: #5d864a; 
   border: 1.5px solid black;
-  color: #ddbb00;
+  color: white;
   padding: 0.5%
 }
 

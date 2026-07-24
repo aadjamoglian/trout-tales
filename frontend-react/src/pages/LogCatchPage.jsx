@@ -10,6 +10,10 @@ export const LogCatchPage = () => {
     const [bait, setBait] = useState('');
     const [story, setStory] = useState('');
     const [coordinates, setCoordinates] = useState('');
+    const [geoOption, setGeoOption] = useState('coordinates');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
 
     const navigate = useNavigate();
 
@@ -17,6 +21,24 @@ export const LogCatchPage = () => {
         event.preventDefault();
 
         const newCatchItem = {date, species, weight, length_in, bait, story, coordinates}
+
+        if (geoOption === 'cityStateCountry') {
+            console.log(city)
+            let url = `http://localhost:3001/geocoding?city=${city}&stateCode=${state}&countryCode=${country}&limit=5`
+            const response = await fetch(
+                url, {
+                    
+                    method: 'GET',
+                }
+            ).then(resp => resp.json()).catch(error => console.log(error))
+
+            const data = response[0]
+            const latLon = [data.lat, data.lon]
+            console.log(latLon);
+            setCoordinates(latLon);
+            newCatchItem.coordinates = latLon
+        }
+        
         console.log(newCatchItem);
         const response = await fetch(
             '/catches', {
@@ -95,6 +117,22 @@ export const LogCatchPage = () => {
                         />
                     </p>
                     <p>
+                        <label htmlFor="geoOption">Geo Option: </label>
+                        <select
+                            id="geoOption"
+                            name="geoOption" 
+                            value={geoOption}
+                            onChange={e => 
+                                setGeoOption(e.target.value)
+                            }
+                            >
+                            <option value="" disabled>Please select a geo option</option>
+                            <option value="coordinates">Coordinates</option>
+                            <option value="cityStateCountry">City, State, and Country</option>
+                        </select>
+                    </p>
+                    { geoOption === 'coordinates' && (
+                    <p>
                         <label htmlFor="coordinates">Coordinates: </label>
                         <input 
                             name="coordinates" 
@@ -104,8 +142,39 @@ export const LogCatchPage = () => {
                                 console.log(latLong);
                                 setCoordinates(latLong);
                             }}
+
                         />
-                    </p>
+                    </p>)}
+                    { geoOption === 'cityStateCountry' && (
+                    <p>
+                        <label htmlFor="city">City: </label>
+                        <input 
+                            name="city" 
+                            type="text"
+                            value={city}
+                            onChange={e => setCity(e.target.value)}
+                        />
+                    </p>)}
+                    { geoOption === 'cityStateCountry' && (
+                    <p>
+                        <label htmlFor="state">State: </label>
+                        <input 
+                            name="state" 
+                            type="text"
+                            value={state}
+                            onChange={e => setState(e.target.value)}
+                        />
+                    </p>)}
+                    { geoOption === 'cityStateCountry' && (
+                    <p>
+                        <label htmlFor="country">Country: </label>
+                        <input 
+                            name="country" 
+                            type="text"
+                            value={country}
+                            onChange={e => setCountry(e.target.value)}
+                        />
+                    </p>)}
                     <input type="submit" id="submit" value="Add"/>
                 </fieldset>
             </form>
