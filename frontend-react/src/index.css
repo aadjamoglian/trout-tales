@@ -164,10 +164,14 @@ thead {
     padding: 10%; 
 }
 
+tr {
+
+}
+
 tr, td  {
-    border: 1.5px solid black;
-    color: #582922;
-    padding: 1%
+  border: 1.5px solid black;
+  color: #582922;
+  padding: 1%;
 }
 
 tr th {
@@ -224,5 +228,20 @@ p {
     font-weight: 500;
 }
 
+.leftStory {
+  float:left;
+  width:95%
+}
 
+.rightStory {
+  float:right;
+  width:5%;
+}
 
+.storyCell {
+  max-width: 450px;
+}
+
+.loginAndRegister {
+  margin: 3px;
+}

@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import CatchRow from './CatchRow';
 
 function CatchTable({catches, onEdit, onDelete}) {
+    const [activeIndex, setActiveIndex] = useState();
+
     return (
         <table className="collection-container">
             <thead>
@@ -16,7 +19,7 @@ function CatchTable({catches, onEdit, onDelete}) {
                 </tr>
             </thead>
             <tbody>
-                {catches.map((catchItem, i) => <CatchRow catchItem={catchItem} onEdit={onEdit} onDelete={onDelete} key={i} />)}
+                {catches.map((catchItem, i) => <CatchRow catchItem={catchItem} onEdit={onEdit} onDelete={onDelete} key={i} isActiveSection={i === activeIndex} setActiveIndex={setActiveIndex} activeIndex={activeIndex} sectionIndex={i}/>)}
             </tbody>
         </table>
     )

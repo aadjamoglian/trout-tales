@@ -31,7 +31,7 @@ export const UpdateCatchPage = ({catchItemToEdit}) => {
         } else {
             alert("Failed to update the exercise, status code = " + response.status)
         }
-        navigate('/')
+        navigate('/catches')
 
     };
 

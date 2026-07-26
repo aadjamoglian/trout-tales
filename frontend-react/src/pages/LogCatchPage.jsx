@@ -53,7 +53,7 @@ export const LogCatchPage = () => {
         } else {
             alert("Failed to log the catch, status code = " + response.status)
         }
-        navigate('/')
+        navigate('/catches')
 
     };
 
