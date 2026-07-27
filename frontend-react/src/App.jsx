@@ -35,7 +35,7 @@ function App() {
         <header>
           <img src={troutLogo} alt="Trout Logo" />
           <h1>Trout Tales</h1>
-          <p>Saving all of your fishing memories, so you'll never forget them...</p>
+          <p>The completely free tool to keep track of all your fishing memories...</p>
         </header>
 
         <Router>

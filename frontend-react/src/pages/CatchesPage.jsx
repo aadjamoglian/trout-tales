@@ -18,16 +18,22 @@ function CatchesPage({setCatchItemToEdit}) {
     }, []);
 
     const onDelete = async (_id) => {
-        const response = await fetch (
-            `/catches/${_id}`,
-            {method: 'DELETE'}
-        );
+        const isConfirmed = window.confirm("Are you sure you want to delete this catch?")
 
-        if (response.status === 204) {
-            setCatches(catches.filter((catchItem) => catchItem._id !== _id))
-        } else {
-            alert(`Failed to delete the movie with _id = ${_id}, status code = ${response.status}`)
+        if (isConfirmed) {
+            const response = await fetch (
+                `/catches/${_id}`,
+                {method: 'DELETE'}
+            );
+
+            if (response.status === 204) {
+                setCatches(catches.filter((catchItem) => catchItem._id !== _id))
+            } else {
+                alert(`Failed to delete the movie with _id = ${_id}, status code = ${response.status}`)
+            }
         }
+
+
     }
 
     const onEdit = (catchItem) => {
@@ -39,7 +45,7 @@ function CatchesPage({setCatchItemToEdit}) {
         <>
             <h2>List of Catches</h2>
             <CatchTable catches={catches} onEdit={onEdit} onDelete={onDelete}></CatchTable>
-            <Link to="/log-catch"></Link>
+            <Link to="/log-catch">Log A Catch</Link>
         </>
     )
 
