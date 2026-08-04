@@ -49,6 +49,13 @@ app.get('/catches', asyncHandler ( async (req, res, next) => {
     res.status(200).type('application/json').send(allCatches);
 }))
 
+app.get('/search', asyncHandler ( async (req, res, next) => {
+    console.log(req.query)
+    const searchCatches = await catches.searchCatches(req.query);
+    console.log(searchCatches)
+    res.status(200).type('application/json').send(searchCatches);
+}))
+
 app.get('/catches/:id', asyncHandler( async (req, res) => {
     const catchById = await catches.findCatches({_id: req.params.id})
     if (catchById.length > 0) {

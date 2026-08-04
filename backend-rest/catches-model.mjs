@@ -53,6 +53,21 @@ async function findCatches(filter) {
     return query.exec();
 }
 
+async function searchCatches(filter) {
+    const query = Catch.find({
+        $or: [
+            // {date: filter},
+            {species: filter.search},
+            // {weight: filter},
+            // {length_in: filter},
+            {bait: filter.search}
+            // {story: filter},
+            // {coordinates: filter}
+        ]
+    });
+    return query.exec();
+}
+
 async function updateCatch(filter, body) {
     const result = Catch.updateOne(filter, body);
     return result;
@@ -63,4 +78,4 @@ const deleteCatchById = async (_id) => {
     return result.deletedCount;
 }
 
-export { connect, createModel, createCatch, findCatches, updateCatch, deleteCatchById}
+export { connect, createModel, createCatch, findCatches, searchCatches, updateCatch, deleteCatchById}

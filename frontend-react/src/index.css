@@ -245,3 +245,13 @@ p {
 .loginAndRegister {
   margin: 3px;
 }
+
+.searchBar {        
+  width: 50%;
+}
+
+.search {
+  display: flex;       /* Activates Flexbox layout */
+  justify-content: center;
+  gap: 5px;  
+}

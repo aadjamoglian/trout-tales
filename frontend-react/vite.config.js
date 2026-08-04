@@ -8,6 +8,9 @@ export default defineConfig({
     proxy: {
       '/catches': {
         target: 'http://localhost:3000'
+      },
+      '/search': {
+        target: 'http://localhost:3000'
       }
     }
   }
