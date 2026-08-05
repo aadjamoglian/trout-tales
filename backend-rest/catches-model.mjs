@@ -54,17 +54,59 @@ async function findCatches(filter) {
 }
 
 async function searchCatches(filter) {
-    const query = Catch.find({
-        $or: [
-            // {date: filter},
-            {species: filter.search},
-            // {weight: filter},
-            // {length_in: filter},
-            {bait: filter.search}
-            // {story: filter},
-            // {coordinates: filter}
-        ]
-    });
+    let query = undefined;
+    if (isNaN(filter.search)) {
+        query = Catch.find({
+            $or: [
+                {
+                    $expr: {
+                        $eq: [
+                            {
+                                $arrayElemAt: [
+                                    { $split: [
+                                        { $toString: "$date" }, "T"
+                                        ]
+                                    }, 0
+                                ]
+                            }, 
+                            filter.search
+                        ]
+                    }
+                },
+                {species: filter.search},
+                {bait: filter.search},
+                {story: { $regex: filter.search, $options: 'i' }},
+            ]
+        });
+    } else {
+        query = Catch.find({
+            $or: [
+                {
+                    $expr: {
+                        $eq: [
+                            {
+                                $arrayElemAt: [
+                                    { $split: [
+                                        { $toString: "$date" }, "T"
+                                        ]
+                                    }, 0
+                                ]
+                            }, 
+                            filter.search
+                        ]
+                    }
+                },
+                {species: filter.search},
+                {weight: Number(filter.search)},
+                {length_in: Number(filter.search)},
+                {bait: filter.search},
+                {story: { $regex: filter.search, $options: 'i' }},
+                {coordinates: [Number(filter.search)]}
+            ]
+        });
+    }
+
+
     return query.exec();
 }
 
