@@ -44,6 +44,7 @@ function CatchesPage({setCatchItemToEdit}) {
     }
 
     const onSearch = async (query) => {
+        if (event.key === '')
 
         console.log("Searched: " + query)
         try {

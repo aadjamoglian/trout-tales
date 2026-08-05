@@ -55,6 +55,12 @@ async function findCatches(filter) {
 
 async function searchCatches(filter) {
     let query = undefined;
+
+    if (filter.search == '') {
+        query = Catch.find({});
+        return query.exec();
+    }
+
     if (isNaN(filter.search)) {
         query = Catch.find({
             $or: [
