@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 import { Icon, popup } from 'leaflet';
-import fishIconImage from '../assets/fish2.png'
+import fishIconImage from '../assets/fish.png'
 
 
 function MapPage() {
