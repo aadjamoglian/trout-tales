@@ -57,6 +57,19 @@ GET http://localhost:3000/search?search=Worm HTTP/1.1
 GET http://localhost:3000/catches HTTP/1.1
 
 
+### Sort By Length Ascending
+GET http://localhost:3000/catches?sort=length_in&order=ascending HTTP/1.1
+
+### Sort By Length Descending
+GET http://localhost:3000/catches?sort=length_in&order=descending HTTP/1.1
+
+### Sort By Weight Ascending
+GET http://localhost:3000/catches?sort=weight&order=ascending HTTP/1.1
+
+### Sort By Weight Descending
+GET http://localhost:3000/catches?sort=weight&order=descending HTTP/1.1
+
+
 ### Invalid Request: Bad date
 POST http://localhost:3000/catches HTTP/1.1
 content-type: application/json

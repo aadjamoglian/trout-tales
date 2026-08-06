@@ -6,6 +6,7 @@ import CatchesPage from './pages/CatchesPage';
 import LogCatchPage from './pages/LogCatchPage';
 import LoginPage from './pages/LoginPage';
 import UpdateCatchPage from './pages/UpdateCatchPage';
+import MapPage from './pages/MapPage';
 import troutLogo from './assets/troutLogo_shrunk.png'
 
 
@@ -42,6 +43,7 @@ function App() {
           <nav>
             <Link to="/catches">Catches</Link>
             <Link to="/log-catch">Log Catch</Link>
+            <Link to='/map'>Map</Link>
           </nav>
 
           <main>
@@ -50,6 +52,7 @@ function App() {
               <Route path="/catches" element={<CatchesPage setCatchItemToEdit={setCatchItemToEdit}/>}></Route>
               <Route path="/log-catch" element={<LogCatchPage/>}></Route>
               <Route path="/update" element={<UpdateCatchPage catchItemToEdit={catchItemToEdit}/>}></Route>
+              <Route path="/map" element={<MapPage/>}></Route>
             </Routes>
           </main>
 

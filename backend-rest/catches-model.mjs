@@ -49,7 +49,12 @@ async function createCatch(date, species, weight, length_in, bait, story, coordi
 }
 
 async function findCatches(filter) {
-    const query = Catch.find(filter);
+    let query = undefined;
+    if (filter.sort && filter.order) {
+        query = Catch.find({}).sort([[filter.sort, (filter.order == 'ascending' ? 1 : -1)]])
+    } else {
+        query = Catch.find(filter);
+    }
     return query.exec();
 }
 

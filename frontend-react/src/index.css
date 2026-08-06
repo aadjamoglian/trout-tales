@@ -255,3 +255,7 @@ p {
   justify-content: center;
   gap: 5px;  
 }
+
+.leaflet-container {
+  height: 55vh
+}
