@@ -10,7 +10,7 @@ content-type: application/json
 
 {
     "date": "2026-07-06",
-    "species": "brook trout",
+    "species": "rainbow trout",
     "weight": 1.5,
     "length_in": 12,
     "bait": "Worm",
@@ -24,8 +24,8 @@ content-type: application/json
 
 {
     "date": "2026-07-06",
-    "species": "rainbow trout",
-    "weight": 2,
+    "species": "brook trout",
+    "weight": 2.3,
     "length_in": 14,
     "bait": "Powerbait Pink Mice Tail",
     "story": "Epic battle dude",
@@ -38,8 +38,8 @@ content-type: application/json
 
 {
     "date": "2026-07-08",
-    "species": "rainbow trout",
-    "weight": 2,
+    "species": "lightning trout",
+    "weight": 4.2,
     "length_in": 15,
     "bait": "Powerbait Pink Mice Tail",
     "story": "So crazy",
